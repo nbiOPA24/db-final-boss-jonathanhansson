@@ -1,0 +1,55 @@
+# User-specific files
+.idea/
+.vscode/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]eploy/
+[Dd]ebug/_
+[Dd]ist/_
+[Dd]ebugPublic/_
+bin/
+obj/
+out/
+
+# Tye - for projects using Tye for microservices
+.tye/
+
+# VS for Mac
+.vscode/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+*.sql
+*.bak
+*.sqlproj
+
+# ASP.NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# NPM (if using Node.js in the project)
+node_modules/
+
+# VS Code directory
+.vscode/
+
+# ASP.NET files
+appsettings.Development.json
+appsettings.Test.json
+appsettings.Production.json
