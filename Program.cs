@@ -1,5 +1,16 @@
-﻿using System.Data;
-using System.Data.SqlClient;
+﻿using Microsoft.VisualBasic;
+using System;
+using Microsoft.Data.SqlClient;
 using Dapper;
 
-string connectionString = File.ReadAllText("connectionstring.txt");
+class Program
+{
+    string connectionString = File.ReadAllText("connectionstring.txt");
+    
+    static void Main()
+    {
+        ConnectionHandler connectionHandler = new ConnectionHandler();
+
+        connectionHandler.FetchProducts();
+    }
+}
