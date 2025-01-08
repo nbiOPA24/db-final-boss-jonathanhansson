@@ -40,6 +40,38 @@ public class ConnectionHandler
         }
     }
 
+    // This method lets the user of this software display the
+    public void GetCustomersWithAboveAverageSpending()
+    {
+        using (var connection = GetConnection())
+        {
+            connection.Open();
+
+            var customerList = connection.Query<dynamic>("SELECT Customer.Name, SUM(ProductInOrder.TotalPrice) AS TotalRevenue FROM Customer JOIN [Order] ON Customer.Id = [Order].CustomerId JOIN ProductInOrder ON [Order].Id = ProductInOrder.OrderId GROUP BY Customer.Name HAVING SUM(ProductInOrder.TotalPrice) > (SELECT AVG(TotalPrice) FROM ProductInOrder JOIN [Order] ON ProductInOrder.OrderId = [Order].Id);");
+            
+            foreach (var c in customerList)
+            {
+                System.Console.WriteLine($"Namn: {c.Name}, Spenderat: {c.TotalRevenue}");
+            }
+        }    
+    }
+
+     public void RankBySales()
+    {
+        using (var connection = GetConnection())
+        {
+            connection.Open();
+
+            // här använder vi typen <dynamic> för att SalesPerson i SQL inte ser ut på samma sätt som i C#
+            var rankedSalesPersons = connection.Query<dynamic>("SELECT SalesPerson.Name, COUNT([Order].Id) AS NumberOfOrders FROM [Order] JOIN SalesPerson ON [Order].SalesPersonId = SalesPerson.Id GROUP BY SalesPerson.Name");
+
+            foreach (var rankedSP in rankedSalesPersons)
+            {
+                System.Console.WriteLine($"{rankedSP.Name}: {rankedSP.NumberOfOrders} ordrar");
+            }
+        }
+    }
+
     public void FetchSalesPersons()
     {
         using (var connection = GetConnection())
@@ -55,21 +87,7 @@ public class ConnectionHandler
         }
     }
 
-    public void RankBySales()
-    {
-        using (var connection = GetConnection())
-        {
-            connection.Open();
-
-            // här använder vi typen <dynamic> för att SalesPerson i SQL inte ser ut på samma sätt som i C#
-            var rankedSalesPersons = connection.Query<dynamic>("SELECT SalesPerson.Name, COUNT([Order].Id) AS NumberOfOrders FROM [Order] JOIN SalesPerson ON [Order].SalesPersonId = SalesPerson.Id GROUP BY SalesPerson.Name");
-
-            foreach (var rankedSP in rankedSalesPersons)
-            {
-                System.Console.WriteLine($"{rankedSP.Name}: {rankedSP.NumberOfOrders} ordrar");
-            }
-        }
-    }
+   
 
     public void InsertIntoProducts()
     {
