@@ -1,1 +1,1 @@
-Server=gondolin667.org;Database=yhstudent99_AnalyticsSoftware;UserId=yhstudent99;Password=#DLVOjKubk37;Encrypt=False;TrustServerCertificate=False;
+Server=gondolin667.org;Database=yhstudent99_AnalyticsSoftware;User Id=yhstudent99;Password=#DLVOjKubk37;Encrypt=False;TrustServerCertificate=False;

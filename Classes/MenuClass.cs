@@ -21,7 +21,9 @@ public class Menu
                 case "1":
                     connectionHandler.InsertIntoProducts();
                     break;
-                    
+
+                
+
 
             }
         }
