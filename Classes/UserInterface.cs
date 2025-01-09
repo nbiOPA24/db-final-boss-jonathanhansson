@@ -25,7 +25,7 @@ public class UserInterface
 
         using (var connection = cH.GetConnection())
         {
-            var query = "INSERT INTO Product (Name, Stock, Price) VALUES (@Name, @Stock, @Price"
+            var query = "INSERT INTO Product (Name, Stock, Price) VALUES (@Name, @Stock, @Price";
             connection.Execute(query, new
             {
                 Name = productName,
@@ -69,5 +69,42 @@ public class UserInterface
                 RegionId = customerRegion
             });
         }
+    }
+
+    public void DisplayProducts()
+    {
+        var products = cH.FetchProducts();
+        foreach (var product in products)
+        {
+            System.Console.WriteLine(product);
+        }
+    }
+
+    public void DisplayCustomerWithAboveAverageSpending()
+    {
+        var aboveAverageCustomer = cH.GetCustomersWithAboveAverageSpending();
+
+        foreach (var c in aboveAverageCustomer)
+        {
+            System.Console.WriteLine(c);
+        } 
+    }
+
+    public void DisplaySalesPersons()
+    {
+        var salesPersons = cH.FetchSalesPersons();
+
+        foreach (var sp in salesPersons)
+        {
+            System.Console.WriteLine(sp);
+        }
+    }
+
+    public void DisplaySalesPersonsRankedAfterSales()
+    {
+        var rankedSP = cH.RankBySales();
+
+        foreach (var rsp in rankedSP)
+        System.Console.WriteLine(rsp);
     }
 }
