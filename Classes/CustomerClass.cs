@@ -1,4 +1,4 @@
-public class Customer : IDiscountable
+public class Customer
 {
-    
+
 }

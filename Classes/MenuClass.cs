@@ -2,7 +2,7 @@ using System.Net;
 
 public class Menu
 {
-    ConnectionHandler connectionHandler = new ConnectionHandler();
+    UserInterface ui = new UserInterface();
     public void LetPlayerInsert()
     {
         while (true)
@@ -19,17 +19,22 @@ public class Menu
             switch (answer)
             {
                 case "1":
-                    connectionHandler.InsertIntoProducts();
+                    ui.InsertIntoProducts();
                     break;
 
-                
+                case "2":
+                    ui.InsertIntoCustomers();
+                    break;
 
-
+                default:
+                    return;
             }
+
+        break;
         }
     }
     public static void DisplayStatisticsMenu()
     {
-
+        
     }
 }
