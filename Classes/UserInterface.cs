@@ -25,7 +25,7 @@ public class UserInterface
 
         using (var connection = cH.GetConnection())
         {
-            var query = "INSERT INTO Product (Name, Stock, Price) VALUES (@Name, @Stock, @Price";
+            var query = "INSERT INTO Product (Name, Stock, Price) VALUES (@Name, @Stock, @Price)";
             connection.Execute(query, new
             {
                 Name = productName,
@@ -102,7 +102,7 @@ public class UserInterface
 
     public void DisplaySalesPersonsRankedAfterSales()
     {
-        var rankedSP = cH.RankBySales();
+        var rankedSP = cH.FetchRankBySales();
 
         foreach (var rsp in rankedSP)
         System.Console.WriteLine(rsp);
