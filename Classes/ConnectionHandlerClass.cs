@@ -6,11 +6,13 @@ public class ConnectionHandler
 {
     private string connectionString;
 
+    // konstruktorn sätter värdet till connectionString direkt
     public ConnectionHandler()
     {
-        connectionString = File.ReadAllText("connectionstring.txt");
+        connectionString = FetchConnectionString();
     }
 
+    // returnerar en instans av SqlConnection. Vid skapandet av en instans av denna klass måste man skicka in en connection string
     public IDbConnection GetConnection()
     {
         return new SqlConnection(connectionString);
@@ -25,6 +27,14 @@ public class ConnectionHandler
         }
     }
 
+    // hämtar "connectionstringen" som kopplar C# och SQL
+    public string FetchConnectionString()
+    {
+        var connectionString = File.ReadAllText("connectionstring.txt");
+        return connectionString;
+    }
+
+    // hämtar alla produkter från shopen (OBS, skriver inte ut dem, det görs i klassen UI)
     public IEnumerable<Product> FetchProducts()
     {
         using (var connection = GetConnection())
@@ -37,7 +47,7 @@ public class ConnectionHandler
         }
     }
 
-    // This method lets the user of this software display the
+    // hämtar alla kunder som spenderat mer än genomsnittet av alla kunders spenderade summa (OBS, skriver inte ut dem, det görs i klassen UI)
     public IEnumerable<Customer> GetCustomersWithAboveAverageSpending()
     {
         using (var connection = GetConnection())
@@ -50,7 +60,8 @@ public class ConnectionHandler
         }
     }
 
-    public IEnumerable<SalesPerson> RankBySales()
+    // hämtar alla säljare och rangordnar dem efter hur mycket de sålt för (OBS, skriver inte ut dem, det görs i klassen UI)
+    public IEnumerable<SalesPerson> FetchRankBySales()
     {
         using (var connection = GetConnection())
         {
@@ -62,6 +73,7 @@ public class ConnectionHandler
         }
     }
 
+    // hämtar alla säljare från databasen (OBS, skriver inte ut dem, det görs i klassen UI)
     public IEnumerable<SalesPerson> FetchSalesPersons()
     {
         using (var connection = GetConnection())
