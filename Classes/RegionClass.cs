@@ -1,4 +1,4 @@
-public class Region : IDiscountable
+public class Region
 {
     
 }

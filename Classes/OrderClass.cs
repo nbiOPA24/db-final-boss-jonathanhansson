@@ -1,4 +1,4 @@
-public class Order : IDiscountable
+public class Order
 {
     
 }
