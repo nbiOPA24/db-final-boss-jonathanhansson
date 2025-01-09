@@ -7,9 +7,9 @@ Det här projektet handlar om att skapa en databasstruktur för affärslogik i C
 
 - [x] Skapa ett diagram i draw.io
 - [x] Skicka diagrammet till Krister
-- [ ] Läs på om vad som bör ligga i databasen och vad som ska vara affärslogik (C#)
-- [ ] Diskutera "vad som bör vara var" med Krister
-- [ ] Implementera relevanta delar i C#/SQL
+- [x] Läs på om vad som bör ligga i databasen och vad som ska vara affärslogik (C#)
+- [x] Diskutera "vad som bör vara var" med Krister
+- [x] Implementera relevanta delar i C#/SQL
 
 ## Installationsinstruktioner
 
